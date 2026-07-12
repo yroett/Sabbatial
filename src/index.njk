@@ -1,0 +1,28 @@
+---
+layout: base.njk
+title: Start
+---
+<section class="hero">
+  <p class="hero-eyebrow">{{ site.currentStage }}</p>
+  <h1 class="hero-title">{{ site.title }}<span class="hero-dot">.</span></h1>
+  <p class="hero-sub">{{ site.subtitle }} — zu Fuß von Bregenz bis Riva del Garda, weiter durch die Anden und über den Äquator.</p>
+</section>
+
+<section class="latest">
+  <div class="latest-head">
+    <h2>Letzte Einträge</h2>
+    <a href="/journal/">Alle Einträge →</a>
+  </div>
+  <ul class="logbook">
+    {% for entry in collections.journal | limit(4) %}
+    <li class="logbook-row">
+      <a href="{{ entry.url }}">
+        <span class="logbook-date">{{ entry.data.date | shortDate }}</span>
+        <span class="logbook-stage">{{ entry.data.stage }}</span>
+        <span class="logbook-title">{{ entry.data.title }}</span>
+        <span class="logbook-place">{{ entry.data.location }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

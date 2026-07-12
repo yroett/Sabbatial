@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or site.title }} — {{ site.title }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-head">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span class="brand-text">{{ site.title }}</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/journal/">Journal</a>
+      <a href="/ueber-die-reise/">Über die Reise</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-foot">
+    <p>{{ site.author }} unterwegs, {{ year }}. Kein Tracking, keine Anmeldung nötig — nur zum Mitlesen.</p>
+  </footer>
+</body>
+</html>

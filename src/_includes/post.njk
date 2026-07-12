@@ -1,0 +1,38 @@
+---
+layout: base.njk
+---
+<article class="entry">
+  <div class="entry-head">
+    <div class="stamp" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <circle cx="60" cy="60" r="46" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="60" y="46" text-anchor="middle" class="stamp-stage">{{ stage or "Etappe" }}</text>
+        <text x="60" y="68" text-anchor="middle" class="stamp-place">{{ location or "" }}</text>
+      </svg>
+    </div>
+    <div class="entry-meta">
+      <time class="meta-date" datetime="{{ date }}">{{ date | readableDate }}</time>
+      {% if coordinates %}<span class="meta-coords">{{ coordinates }}</span>{% endif %}
+    </div>
+    <h1 class="entry-title">{{ title }}</h1>
+  </div>
+
+  {% if cover %}
+  <figure class="entry-cover">
+    <img src="{{ cover }}" alt="{{ title }}" loading="lazy">
+  </figure>
+  {% endif %}
+
+  <div class="entry-body">
+    {{ content | safe }}
+  </div>
+
+  {% if video %}
+  <div class="entry-video">
+    <iframe src="{{ video }}" title="Video: {{ title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  {% endif %}
+
+  <a class="back-link" href="/journal/">← Zurück zum Journal</a>
+</article>

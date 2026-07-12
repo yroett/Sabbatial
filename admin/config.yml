@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Nach dem Speichern im Formular baut Netlify die Seite automatisch neu.
+publish_mode: simple
+media_folder: "src/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "journal"
+    label: "Journal-Einträge"
+    label_singular: "Eintrag"
+    folder: "src/posts"
+    create: true
+    slug: "{{fields.stage}}-{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Etappe (z.B. 'Etappe 06')", name: "stage", widget: "string" }
+      - { label: "Ort", name: "location", widget: "string" }
+      - { label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Koordinaten (optional)", name: "coordinates", widget: "string", required: false }
+      - { label: "Titelbild", name: "cover", widget: "image", required: false }
+      - { label: "Video-Link (YouTube-Embed-URL, optional)", name: "video", widget: "string", required: false, hint: "z.B. https://www.youtube-nocookie.com/embed/VIDEO_ID" }
+      - { label: "Text", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post.njk" }

@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: Journal
+permalink: /journal/index.html
+---
+<section class="page-head">
+  <h1>Journal</h1>
+  <p>Alle Etappen, der Reihe nach — neueste zuerst.</p>
+</section>
+
+<ul class="logbook logbook--full">
+  {% for entry in collections.journal %}
+  <li class="logbook-row">
+    <a href="{{ entry.url }}">
+      <span class="logbook-date">{{ entry.data.date | shortDate }}</span>
+      <span class="logbook-stage">{{ entry.data.stage }}</span>
+      <span class="logbook-title">{{ entry.data.title }}</span>
+      <span class="logbook-place">{{ entry.data.location }}</span>
+    </a>
+  </li>
+  {% else %}
+  <li class="logbook-empty">Noch keine Einträge — die Reise beginnt bald.</li>
+  {% endfor %}
+</ul>
